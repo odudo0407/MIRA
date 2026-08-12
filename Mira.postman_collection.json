@@ -1,0 +1,719 @@
+{
+  "info": {
+    "_postman_id": "f1c2193a-7f68-4d41-9a48-c4628b1cde17",
+    "name": "Mira",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57226548"
+  },
+  "item": [
+    {
+      "name": "TC-01",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"TC-01 返回 200\", () => {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"TC-01 token 存在\", () => {\r",
+              "    pm.expect(pm.response.json().token).to.exist;\r",
+              "});\r",
+              "pm.test(\"TC-01 user.email 匹配\", () => {\r",
+              "    const body = JSON.parse(pm.request.body.raw);\r",
+              "    pm.expect(pm.response.json().user.email).to.eql(body.email);\r",
+              "});\r",
+              "pm.test(\"TC-01 user.name 匹配\", () => {\r",
+              "    const body = JSON.parse(pm.request.body.raw);\r",
+              "    pm.expect(pm.response.json().user.name).to.eql(body.nickname);\r",
+              "});\r",
+              "pm.test(\"TC-01 is_admin=false\", () => {\r",
+              "    pm.expect(pm.response.json().user.is_admin).to.be.false;\r",
+              "});\r",
+              "// 自动保存 token\r",
+              "pm.environment.set(\"token\", pm.response.json().token);\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"test_001@mira.local\",\r\n  \"password\": \"Test123456\",\r\n  \"nickname\": \"测试用户\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC-02",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"TC-02 返回 200\", () => {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"TC-02 token 存在\", () => {\r",
+              "    pm.expect(pm.response.json().token).to.exist;\r",
+              "});\r",
+              "pm.test(\"TC-02 user.email 匹配\", () => {\r",
+              "    const body = JSON.parse(pm.request.body.raw);\r",
+              "    pm.expect(pm.response.json().user.email).to.eql(body.email);\r",
+              "});\r",
+              "pm.environment.set(\"token\", pm.response.json().token);\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"test_001@mira.local\",\r\n  \"password\": \"Test123456\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC-04",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"TC-04 返回 400\", () => {\r",
+              "    pm.response.to.have.status(400);\r",
+              "});\r",
+              "pm.test(\"TC-04 提示已注册\", () => {\r",
+              "    pm.expect(pm.response.json().error).to.include(\"已注册\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"test_001@mira.local\",\r\n  \"password\": \"Test123456\",\r\n  \"nickname\": \"重复注册\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC-03",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"TC-03 /me 返回 200\", () => {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"TC-03 返回 user.email\", () => {\r",
+              "    pm.expect(pm.response.json().user).to.have.property(\"email\");\r",
+              "});\r",
+              "pm.test(\"TC-03 返回 user.name\", () => {\r",
+              "    pm.expect(pm.response.json().user).to.have.property(\"name\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/me",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "me"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC-05",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"TC-05 短密码被拒\", () => {\r",
+              "    pm.expect(pm.response.code).to.not.eql(200);\r",
+              "});\r",
+              "pm.test(\"TC-05 提示密码至少6位\", () => {\r",
+              "    pm.expect(pm.response.json().error).to.include(\"至少6位\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"short@mira.local\",\r\n  \"password\": \"12345\",\r\n  \"nickname\": \"短密码\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC-06",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"TC-06 6位密码注册成功\", () => {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"edge6@mira.local\",\r\n  \"password\": \"123456\",\r\n  \"nickname\": \"边界6位\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC-07",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// 这条故意 FAIL — 预期 400 但实际 200，证明发现了 Bug-001\r",
+              "pm.test(\"TC-07 邮箱格式错应被拒(预期400)\", () => {\r",
+              "    pm.response.to.have.status(400);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"notanemail\",\r\n  \"password\": \"Test123456\",\r\n  \"nickname\": \"错邮箱\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC-08",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"TC-08 空邮箱被拒\", () => {\r",
+              "    pm.expect(pm.response.code).to.not.eql(200);\r",
+              "});\r",
+              "pm.test(\"TC-08 提示邮箱不能为空\", () => {\r",
+              "    pm.expect(pm.response.json().error).to.include(\"邮箱不能为空\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"\",\r\n  \"password\": \"Test123456\",\r\n  \"nickname\": \"空邮箱\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC-09",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"TC-09 空密码被拒\", () => {\r",
+              "    pm.expect(pm.response.code).to.not.eql(200);\r",
+              "});\r",
+              "pm.test(\"TC-09 提示密码至少6位\", () => {\r",
+              "    pm.expect(pm.response.json().error).to.include(\"至少6位\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"emptypwd@mira.local\",\r\n  \"password\": \"\",\r\n  \"nickname\": \"空密码\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC-10",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"TC-10 错误密码被拒\", () => {\r",
+              "    pm.expect(pm.response.code).to.not.eql(200);\r",
+              "});\r",
+              "pm.test(\"TC-10 提示密码错误\", () => {\r",
+              "    pm.expect(pm.response.json().error).to.include(\"密码错误\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"test_001@mira.local\",\r\n  \"password\": \"WrongPassword999\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC-11",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"TC-11 不存在邮箱被拒\", () => {\r",
+              "    pm.expect(pm.response.code).to.not.eql(200);\r",
+              "});\r",
+              "pm.test(\"TC-11 提示账号不存在\", () => {\r",
+              "    pm.expect(pm.response.json().error).to.include(\"账号不存在\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"nobody@mira.local\",\r\n  \"password\": \"Test123456\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC-12",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"TC-12 无 Token 返回 401\", () => {\r",
+              "    pm.response.to.have.status(401);\r",
+              "});\r",
+              "pm.test(\"TC-12 提示 unauthorized\", () => {\r",
+              "    pm.expect(pm.response.json().error).to.eql(\"unauthorized\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/me",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "me"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TC-13",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"TC-13 错 Token 返回 401\", () => {\r",
+              "    pm.response.to.have.status(401);\r",
+              "});\r",
+              "pm.test(\"TC-13 提示 unauthorized\", () => {\r",
+              "    pm.expect(pm.response.json().error).to.eql(\"unauthorized\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer wrongtoken123",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/me",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "me"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
