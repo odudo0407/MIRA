@@ -1,0 +1,365 @@
+@import './var.scss';
+@import './mixins.scss';
+
+// Community 页面样式
+.community {
+  background: $bg-body;
+  min-height: 100vh;
+}
+
+.container {
+  width: $container-width;
+  margin: 30px auto;
+  box-sizing: border-box;
+}
+
+.content-wrapper {
+  display: flex;
+  margin-top: 30px;
+}
+
+.content-wrapper > view {
+  margin-left: 30px;
+}
+
+.content-wrapper > view:first-child {
+  margin-left: 0;
+}
+
+.main-content {
+  flex: 1;
+}
+
+// CreatePost 组件样式
+.create-post {
+  background: $white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.create-post-header {
+  @include flex-align-center;
+  margin-bottom: 15px;
+}
+
+.create-post-header > view {
+  margin-left: 12px;
+}
+
+.create-post-header > view:first-child {
+  margin-left: 0;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: $bg-gray;
+}
+
+.post-input {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.post-tools {
+  display: flex;
+}
+
+.post-tools > view {
+  margin-left: 15px;
+}
+
+.post-tools > view:first-child {
+  margin-left: 0;
+}
+
+.tool-btn {
+  color: $text-secondary;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.tool-btn:active {
+  color: $primary;
+}
+
+.post-btn {
+  background: $primary;
+  color: $white;
+  padding: 8px 24px;
+  border-radius: 20px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.post-btn:active {
+  background: $primary-dark;
+}
+
+// CategoryTabs 组件样式
+.category-tabs {
+  display: flex;
+  background: $white;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.category-tabs > view {
+  margin-left: 20px;
+}
+
+.category-tabs > view:first-child {
+  margin-left: 0;
+}
+
+.category-tab {
+  padding: 6px 16px;
+  border-radius: 20px;
+  color: $text-regular;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.category-tab.active {
+  background: $primary;
+  color: $white;
+}
+
+.category-tab:active {
+  background: rgba($primary, 0.1);
+}
+
+// PostList 和 PostItem 样式
+.post-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-list > view {
+  margin-bottom: 15px;
+}
+
+.post-list > view:last-child {
+  margin-bottom: 0;
+}
+
+.post-item {
+  background: $white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s;
+}
+
+.post-item:active {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+  @include flex-align-center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.post-author-info {
+  @include flex-align-center;
+}
+
+.post-author-info > view {
+  margin-left: 10px;
+}
+
+.post-author-info > view:first-child {
+  margin-left: 0;
+}
+
+.author-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.author-name {
+  font-weight: 500;
+  color: $text-primary;
+  font-size: 14px;
+}
+
+.post-time {
+  font-size: 12px;
+  color: $text-secondary;
+}
+
+.post-category {
+  padding: 4px 12px;
+  background: rgba($primary, 0.1);
+  color: $primary;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.post-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: $text-primary;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.post-summary {
+  font-size: 14px;
+  color: $text-regular;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid $border-light;
+}
+
+.post-stats {
+  display: flex;
+}
+
+.post-stats > view {
+  margin-left: 20px;
+}
+
+.post-stats > view:first-child {
+  margin-left: 0;
+}
+
+.stat-item {
+  @include flex-align-center;
+  color: $text-secondary;
+  font-size: 13px;
+}
+
+.stat-item text {
+  margin-left: 5px;
+}
+
+.stat-item text:first-child {
+  margin-left: 0;
+}
+
+// Sidebar 样式
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+.sidebar-card {
+  background: $white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.sidebar-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: $text-primary;
+  margin-bottom: 15px;
+}
+
+.hot-topics {
+  display: flex;
+  flex-direction: column;
+}
+
+.hot-topics > view {
+  margin-bottom: 12px;
+}
+
+.hot-topics > view:last-child {
+  margin-bottom: 0;
+}
+
+.hot-topic-item {
+  @include flex-align-center;
+  transition: color 0.3s;
+}
+
+.hot-topic-item > view {
+  margin-left: 10px;
+}
+
+.hot-topic-item > view:first-child {
+  margin-left: 0;
+}
+
+.topic-rank {
+  width: 20px;
+  height: 20px;
+  @include flex-center;
+  background: $bg-gray;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $text-secondary;
+}
+
+.topic-rank.top {
+  background: $primary;
+  color: $white;
+}
+
+.topic-text {
+  flex: 1;
+  font-size: 14px;
+  color: $text-regular;
+}
+
+.hot-topic-item:active .topic-text {
+  color: $primary;
+}
+
+.user-stats {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 15px;
+  border-top: 1px solid $border-light;
+}
+
+.stat-box {
+  text-align: center;
+}
+
+.stat-value {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: $primary;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: $text-secondary;
+}

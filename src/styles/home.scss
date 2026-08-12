@@ -1,0 +1,632 @@
+@import './var.scss';
+@import './mixins.scss';
+@import './animations.scss';
+
+// NavBar
+.navbar {
+  @include backdrop-blur;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  border-bottom: 1px solid $border-light;
+}
+
+.nav-container {
+  width: $container-width;
+  margin: 0 auto;
+  padding: 1rem 0;
+  @include flex-align-center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.logo {
+  @include flex-align-center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $primary;
+}
+
+.logo > text {
+  margin-left: 0.5rem;
+}
+
+.logo > text:first-child {
+  margin-left: 0;
+  font-size: 1.5rem;
+}
+
+.nav-links {
+  display: flex;
+  color: $text-regular;
+  font-weight: 500;
+}
+
+.nav-links > view {
+  margin-left: 2rem;
+}
+
+.nav-links > view:first-child {
+  margin-left: 0;
+}
+
+.nav-links text {
+  color: inherit;
+  transition: color 0.3s;
+}
+
+.nav-links text:active {
+  color: $primary;
+}
+
+.menu-btn {
+  display: none;
+  color: $text-regular;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+// Hero
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom right, #eef2ff, $white, #faf5ff);
+  padding: 5rem 0;
+}
+
+.hero-container {
+  width: $container-width;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.hero-container > view {
+  margin-left: 3rem;
+}
+
+.hero-container > view:first-child {
+  margin-left: 0;
+}
+
+.hero-content {
+  flex: 1;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, $primary, $secondary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.125rem;
+  color: $text-regular;
+  margin: 1.5rem 0;
+}
+
+.hero-buttons {
+  display: flex;
+}
+
+.hero-buttons > button {
+  margin-left: 1rem;
+}
+
+.hero-buttons > button:first-child {
+  margin-left: 0;
+}
+
+.btn-primary {
+  background: $primary;
+  color: $white;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  border: none;
+  @include flex-align-center;
+  transition: background 0.3s;
+}
+
+.btn-primary text {
+  margin-left: 0.5rem;
+}
+
+.btn-primary text:first-child {
+  margin-left: 0;
+}
+
+.btn-primary:active {
+  background: $primary-dark;
+}
+
+.btn-secondary {
+  border: 2px solid $primary;
+  color: $primary;
+  background: transparent;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  @include flex-align-center;
+  transition: background 0.3s;
+}
+
+.btn-secondary text {
+  margin-left: 0.5rem;
+}
+
+.btn-secondary text:first-child {
+  margin-left: 0;
+}
+
+.btn-secondary:active {
+  background: rgba($primary, 0.05);
+}
+
+.hero-note {
+  font-size: 0.875rem;
+  color: $text-secondary;
+  padding-top: 1rem;
+}
+
+.hero-note text {
+  margin-right: 0.25rem;
+}
+
+.hero-image {
+  flex: 1;
+}
+
+.icon-grid {
+  position: relative;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.icon-grid > text {
+  margin: 0.75rem;
+}
+
+.vue-icon {
+  font-size: 4rem;
+  color: $vue-color;
+  opacity: 0.7;
+}
+
+.code-icon {
+  font-size: 4rem;
+  color: $primary;
+  opacity: 0.7;
+}
+
+.mobile-icon {
+  font-size: 4rem;
+  color: $secondary;
+  opacity: 0.7;
+}
+
+.chart-icon {
+  font-size: 4rem;
+  color: #ec4899;
+  opacity: 0.7;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(20px);
+  opacity: 0.7;
+}
+
+.blob-1 {
+  bottom: -1.25rem;
+  right: -1.25rem;
+  width: 6rem;
+  height: 6rem;
+  background: #c7d2fe;
+}
+
+.blob-2 {
+  top: -1.25rem;
+  left: -1.25rem;
+  width: 8rem;
+  height: 8rem;
+  background: #e9d5ff;
+}
+
+// Features
+.features {
+  padding: 5rem 0;
+  background: $white;
+}
+
+.features-container {
+  width: $container-width;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.features-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-tag {
+  color: $primary;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0 1rem;
+  color: $text-primary;
+}
+
+.section-desc {
+  color: $text-regular;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.features-grid > view {
+  margin: 1rem;
+}
+
+// FeatureCard
+.feature-card {
+  background: $bg-gray;
+  padding: 2rem;
+  border-radius: 1rem;
+  @include card-shadow(true);
+  border: 1px solid $border-light;
+}
+
+.feature-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #e0e7ff;
+  color: $primary;
+  border-radius: 0.75rem;
+  @include flex-center;
+  font-size: 1.875rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.feature-card:active .feature-icon {
+  transform: scale(1.1);
+}
+
+.feature-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: $text-primary;
+}
+
+.feature-text {
+  color: $text-regular;
+}
+
+// About
+.about {
+  padding: 5rem 0;
+  background: $bg-gray;
+}
+
+.about-container {
+  width: $container-width;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.about-container > view {
+  margin-left: 3rem;
+}
+
+.about-container > view:first-child {
+  margin-left: 0;
+}
+
+.about-content {
+  flex: 1;
+}
+
+.about-text-lg {
+  font-size: 1.125rem;
+  color: $text-regular;
+  margin-bottom: 1rem;
+}
+
+.about-text {
+  color: $text-secondary;
+  margin-bottom: 1.5rem;
+}
+
+.founder {
+  @include flex-align-center;
+}
+
+.founder > view {
+  margin-left: 1rem;
+}
+
+.founder > view:first-child {
+  margin-left: 0;
+}
+
+.founder image {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  border: 2px solid #c7d2fe;
+}
+
+.founder-name {
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.founder-title {
+  font-size: 0.875rem;
+  color: $text-secondary;
+}
+
+.stats-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.stats-grid > view {
+  margin: 0.5rem;
+}
+
+// StatsCard
+.stats-card {
+  background: $white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.stats-card.full-width {
+  grid-column: span 2;
+  margin-top: 0.5rem;
+}
+
+.stats-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.stats-icon.indigo {
+  color: $primary;
+}
+
+.stats-icon.purple {
+  color: $secondary;
+}
+
+.award-icon {
+  font-size: 2.5rem;
+  color: $warning;
+  margin-bottom: 0.5rem;
+}
+
+.stats-value {
+  display: block;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.stats-label {
+  color: $text-regular;
+}
+
+// Contact
+.contact {
+  padding: 5rem 0;
+  background: $white;
+}
+
+.contact-container {
+  width: $container-width;
+  max-width: 56rem;
+  margin: 0 auto;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.contact-form {
+  background: $bg-gray;
+  border-radius: 1.5rem;
+  padding: 3rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form form > view {
+  margin-top: 1.5rem;
+}
+
+.contact-form form > view:first-child {
+  margin-top: 0;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.form-row > view {
+  margin-left: 1.5rem;
+}
+
+.form-row > view:first-child {
+  margin-left: 0;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $text-regular;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid $border-color;
+  transition: all 0.3s;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #c7d2fe;
+}
+
+.btn-submit {
+  background: $primary;
+  color: $white;
+  padding: 1rem 4rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  border: none;
+  @include flex-align-center;
+  transition: background 0.3s;
+  width: auto;
+  align-self: center;
+}
+
+.btn-submit text {
+  margin-left: 0.5rem;
+}
+
+.btn-submit text:first-child {
+  margin-left: 0;
+}
+
+.btn-submit:active {
+  background: $primary-dark;
+}
+
+.success-message {
+  color: $success;
+  margin-top: 1rem;
+  @include flex-align-center;
+  justify-content: center;
+}
+
+.success-message text {
+  margin-left: 0.5rem;
+}
+
+.success-message text:first-child {
+  margin-left: 0;
+}
+
+// Footer
+.footer {
+  background: $gray-900;
+  color: $gray-400;
+  padding: 3rem 0;
+}
+
+.footer-container {
+  width: $container-width;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.footer-logo {
+  @include flex-align-center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $white;
+}
+
+.footer-logo > text {
+  margin-left: 0.5rem;
+}
+
+.footer-logo > text:first-child {
+  margin-left: 0;
+  color: $primary-light;
+}
+
+.footer-copyright {
+  font-size: 0.875rem;
+}
+
+.footer-social {
+  display: flex;
+  font-size: 1.25rem;
+}
+
+.footer-social > text {
+  margin-left: 1.25rem;
+}
+
+.footer-social > text:first-child {
+  margin-left: 0;
+}
+
+.footer-social text {
+  color: inherit;
+  transition: color 0.3s;
+}
+
+.footer-social text:active {
+  color: $primary-light;
+}
